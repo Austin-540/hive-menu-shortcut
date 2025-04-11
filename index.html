@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hive Menu Redirect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1 id="WEEKNUMTEXT">It is week ... you need JS on for this to work</h1>
+    </div>
+
+
+
+</body>
+
+
+<script>
+    function getWeekNumber(startDate, currentDate) {
+    const MS_PER_DAY = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+    const diffInDays = Math.floor((currentDate - startDate) / MS_PER_DAY); // Difference in days
+    return Math.floor(diffInDays / 7); // Calculate the week number
+}
+// Set the start date to February 17th, 2025 (Week 0 Monday)
+const startDate = new Date(2025, 1, 17); // Month is zero-based, so February is 1
+
+// Set the current date (today)
+const currentDate = new Date(); // This gets today's date
+// Calculate the week number
+const weekNumber = getWeekNumber(startDate, currentDate);
+
+const wknumtext = document.getElementById("WEEKNUMTEXT")
+
+wknumtext.textContent = `Week ${weekNumber}`
+
+// setTimeout(() => {
+//     window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
+// }, 500)
+
+
+
+</script>
+</html>
+
+<style>
+    #WEEKNUMTEXT {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 90px;
+}
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(270deg, #e32625, #8e05ff, #e32625); /* Gradient colors */
+        background-size: 800% 800%;
+        animation: gradientShift 0.8s ease-out forwards; /
+    }
+
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+        99% {
+            background-position: 99% 50%;
+        }
+        100% {
+            background-position: 99% 50%;
+        }
+    }
+</style>
