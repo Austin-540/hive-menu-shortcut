@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Menu Shortcut</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
@@ -37,9 +36,17 @@ const wknumtext = document.getElementById("WEEKNUMTEXT")
 
 wknumtext.textContent = `Week ${weekNumber}`
 
-setTimeout(() => {
-    window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
-}, 100)
+if (currentDate.getFullYear() != 2025) {
+    alert("This website won't work because it isn't 2025. Flametree updates their file names each year. Sorry :(")
+} else {
+    setTimeout(() => {
+        window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
+    }, 100)
+}
+
+
+
+
 
 
 
