@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1 id="WEEKNUMTEXT">It is week ... you need JS on for this to work</h1>
+    <div id="WEEKNUMDIV">
+        <h1 id="WEEKNUMTEXT">you need JS on for this to work</h1>
+        <button onclick="makeCookie()" id="cookiebutton">Bookmark this page then click here to activate automatic redirects</button>
     </div>
 
 
@@ -19,6 +20,12 @@
 
 
 <script>
+    if (document.cookie === "redirectsOn=true") {
+        const bttn = document.getElementById("cookiebutton")
+        bttn.remove()
+    }
+
+
     function getWeekNumber(startDate, currentDate) {
     const MS_PER_DAY = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
     const diffInDays = Math.floor((currentDate - startDate) / MS_PER_DAY); // Difference in days
@@ -38,9 +45,12 @@ wknumtext.textContent = `Week ${weekNumber}`
 
 if (currentDate.getFullYear() != 2025) {
     alert("This website won't work because it isn't 2025. Flametree updates their file names each year. Sorry :(")
+} else if (document.cookie !== "redirectsOn=true") { 
+    console.log("not redirecting until the cookie is made")
 } else {
     setTimeout(() => {
         window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
+        // alert("pretend you got redirected")
     }, 100)
 }
 
@@ -49,6 +59,10 @@ if (currentDate.getFullYear() != 2025) {
 
 
 
+function makeCookie() {
+    document.cookie = "redirectsOn=true"
+    window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
+}
 
 </script>
 </html>
@@ -69,8 +83,30 @@ if (currentDate.getFullYear() != 2025) {
         margin: 0;
         background: linear-gradient(270deg, #e32625, #8e05ff, #e32625); 
         background-size: 800% 800%;
-        animation: gradientShift 0.8s ease-out forwards; 
+        animation: gradientShift 1s ease-out forwards; 
     }
+
+
+  button {
+  background-color: #FAFBFC;
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+
+
 
     @keyframes gradientShift {
         0% {
