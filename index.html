@@ -11,7 +11,6 @@
 <body>
     <div id="WEEKNUMDIV">
         <h1 id="WEEKNUMTEXT">you need JS on for this to work</h1>
-        <button onclick="makeCookie()" id="cookiebutton">Bookmark this page then click here to activate automatic redirects</button>
     </div>
 
 
@@ -46,7 +45,11 @@ wknumtext.textContent = `Week ${weekNumber}`
 if (currentDate.getFullYear() != 2025) {
     alert("This website won't work because it isn't 2025. Flametree updates their file names each year. Sorry :(")
 } else if (document.cookie !== "redirectsOn=true") { 
-    console.log("not redirecting until the cookie is made")
+    //console.log("not redirecting until the cookie is made")
+    setTimeout(() => {
+        window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
+        // alert("pretend you got redirected")
+    }, 100)
 } else {
     setTimeout(() => {
         window.location.href = `https://www.uoacampusdining4u.nz/s/EDU25001-UoA-Hive-Waiparuru-Menu-week-${weekNumber}-v1a.pdf`
